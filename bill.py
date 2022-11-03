@@ -42,11 +42,18 @@ while(True):
         qty=int(input("enter the quantity"))
         total+=180*qty
         item.append("mandhi x"+str(qty))
-        print("quantity",qty)
-        print("total",total)
+        #print("quantity",qty)
+        #print("total",total)
         
     elif(choice==5):
         print("added sandwitch")
+        
+        qty=int(input("enter the quantity"))
+        total+=60*qty
+        item.append("sandwitch x"+str(qty))
+        print("quantity",qty)
+        print("total",total)
+        
     elif(choice==6):
         print("generating bill")
         
