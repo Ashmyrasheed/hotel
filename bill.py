@@ -15,6 +15,7 @@ while(True):
     print("6 generate bill")
     print("7 display the transaction details")
     print("8 display the transaction summary of particular day")
+    print("9 display the transaction summary for a period")
     print("10 exit")
     choice=int(input("enter the choice"))
     if(choice==1):
@@ -106,7 +107,23 @@ while(True):
         result=mycursor.fetchall()
         print(result)
         
-
+    elif(choice==8):
+        print("display the transaction summary of particular day")
+        date = input('enter the date where you need the transaction summary of particular day (yyyy-mm-dd):')
+        sql = "SELECT `date`,SUM(`amount`)FROM `bill` WHERE `date` ='"+date+"'"
+        mycursor.execute(sql)
+        result=mycursor.fetchall()
+        print(result)
+    elif(choice==9):
+        print("display the transaction summary for a period")
+        date1 = input('enter the starting date:')
+        date2 = input('enter the ending date:')
+        sql = "SELECT SUM(`amount`) FROM `bill` WHERE `date` BETWEEN '"+date1+"' AND '"+date2+"'"
+        mycursor.execute(sql)
+        result=mycursor.fetchall()
+        print(result)
+        
+        
     elif(choice==10):
         break
     
