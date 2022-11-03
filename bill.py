@@ -13,7 +13,8 @@ while(True):
     print("4 mandhi----180rs")
     print("5 sandwitch--60")
     print("6 generate bill")
-    print("7 exit")
+    print("7 display the transaction details")
+    print("10 exit")
     choice=int(input("enter the choice"))
     if(choice==1):
         print("Added tea")
@@ -97,6 +98,14 @@ while(True):
         print('Thank you Welcome to next time ')
         
     elif(choice==7):
+        print("display the transaction details ")
+        date = input('enter the date where you need the transaction details (yyyy-mm-dd):')
+        sql = "SELECT * FROM `bill` WHERE `date` ='"+date+"'"
+        mycursor.execute(sql)
+        result=mycursor.fetchall()
+        print(result)
+        
+    elif(choice==10):
         break
         
         
