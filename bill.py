@@ -1,5 +1,6 @@
 import mysql.connector
 import sys
+from tabulate import tabulate
 try:
     mydb = mysql.connector.connect(host = 'localhost' , user = 'root' , password = '' , database = 'hoteldb')
     mycursor = mydb.cursor()
@@ -114,14 +115,8 @@ while(True):
             sql = "SELECT * FROM `bill` WHERE `date` ='"+date+"'"
             mycursor.execute(sql)
             result=mycursor.fetchall()
-            for i in result:
-
-                print("name=",i[0])
-
-                print("phno=",i[1])
-
-                print("date",i[2])
-            print(result)
+            print(tabulate(result,headers=["id","name","phno","amount","date"],tablefmt ="psql" ))
+            
         except mysql.connector.Error as e:
             sys.exit("transaction details section error")
         
@@ -132,14 +127,7 @@ while(True):
             sql = "SELECT `date`,SUM(`amount`)FROM `bill` WHERE `date` ='"+date+"'"
             mycursor.execute(sql)
             result=mycursor.fetchall()
-            for i in result:
-
-                print("name=",i[0])
-
-                print("phno=",i[1])
-
-                print("date",i[2])
-            print(result)
+            print(tabulate(result,headers=["date","amount"],tablefmt ="psql" ))
         except mysql.connector.Error as e:
             sys.exit("billing section error")
     elif(choice==9):
@@ -150,13 +138,7 @@ while(True):
             sql = "SELECT SUM(`amount`) FROM `bill` WHERE `date` BETWEEN '"+date1+"' AND '"+date2+"'"
             mycursor.execute(sql)
             result=mycursor.fetchall()
-            for i in result:
-
-                print("name=",i[0])
-
-                print("phno=",i[1])
-
-                print("date",i[2])
+            print(tabulate(result,headers=["amount"],tablefmt ="psql" ))
             print(result)
         except mysql.connector.Error as e:
             sys.exit("billing section error")
