@@ -114,6 +114,13 @@ while(True):
             sql = "SELECT * FROM `bill` WHERE `date` ='"+date+"'"
             mycursor.execute(sql)
             result=mycursor.fetchall()
+            for i in result:
+
+                print("name=",i[0])
+
+                print("phno=",i[1])
+
+                print("date",i[2])
             print(result)
         except mysql.connector.Error as e:
             sys.exit("transaction details section error")
@@ -125,6 +132,13 @@ while(True):
             sql = "SELECT `date`,SUM(`amount`)FROM `bill` WHERE `date` ='"+date+"'"
             mycursor.execute(sql)
             result=mycursor.fetchall()
+            for i in result:
+
+                print("name=",i[0])
+
+                print("phno=",i[1])
+
+                print("date",i[2])
             print(result)
         except mysql.connector.Error as e:
             sys.exit("billing section error")
@@ -136,6 +150,13 @@ while(True):
             sql = "SELECT SUM(`amount`) FROM `bill` WHERE `date` BETWEEN '"+date1+"' AND '"+date2+"'"
             mycursor.execute(sql)
             result=mycursor.fetchall()
+            for i in result:
+
+                print("name=",i[0])
+
+                print("phno=",i[1])
+
+                print("date",i[2])
             print(result)
         except mysql.connector.Error as e:
             sys.exit("billing section error")
