@@ -14,6 +14,7 @@ while(True):
     print("5 sandwitch--60")
     print("6 generate bill")
     print("7 display the transaction details")
+    print("8 display the transaction summary of particular day")
     print("10 exit")
     choice=int(input("enter the choice"))
     if(choice==1):
@@ -105,8 +106,10 @@ while(True):
         result=mycursor.fetchall()
         print(result)
         
+
     elif(choice==10):
         break
+    
         
         
     
